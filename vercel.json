@@ -1,7 +1,10 @@
 {
   "installCommand": "npm install --prefix nba-prop-finder-web",
-  "buildCommand": "npm run build --prefix nba-prop-finder-web",
+  "buildCommand": "CI=false npm run build --prefix nba-prop-finder-web",
   "outputDirectory": "nba-prop-finder-web/build",
+  "env": {
+    "CI": "false"
+  },
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api" }
   ]
