@@ -727,7 +727,11 @@ function PropFinderV3({ state, setState }) {
   const fetchGames = useCallback(() => {
     console.log('Fetching games from:', `${API}/games`);
     fetch(`${API}/games`)
-      .then(res => res.json())
+      .then(res => {
+        console.log('Response status:', res.status, res.statusText);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
       .then(data => {
         if (data.games && data.games.length > 0) {
           setState(prev => {
