@@ -1,0 +1,12 @@
+*.py
+__pycache__/
+*.pyc
+venv/
+env/
+requirements.txt
+backend_api.py
+prediction_engine.py
+check_data.py
+season_2025_26_games.csv
+*.md
+START_NBA_PROP_FINDER.bat
