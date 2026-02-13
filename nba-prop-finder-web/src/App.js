@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const API_BASE = process.env.REACT_APP_API_URL || '';
 const API = API_BASE ? `${API_BASE}/api` : '/api';
+console.log('API URL:', API);
 
 // Animation Variants
 const tabVariants = {
@@ -724,6 +725,7 @@ function PropFinderV3({ state, setState }) {
 
   // Function to fetch and update games
   const fetchGames = useCallback(() => {
+    console.log('Fetching games from:', `${API}/games`);
     fetch(`${API}/games`)
       .then(res => res.json())
       .then(data => {
@@ -756,7 +758,8 @@ function PropFinderV3({ state, setState }) {
           setState(prev => ({ ...prev, games: [], selectedGame: null, players: [], selectedPlayer: '', gamesError: range }));
         }
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error('Failed to fetch games:', err);
         setState(prev => ({ ...prev, gamesError: 'Unable to load games right now.' }));
       });
   }, [API]);
