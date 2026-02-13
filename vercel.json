@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd nba-prop-finder-web && npm run build",
+  "buildCommand": "npm run build --prefix nba-prop-finder-web",
   "outputDirectory": "nba-prop-finder-web/build",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api" }
